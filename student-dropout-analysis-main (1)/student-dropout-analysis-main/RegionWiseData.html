@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dropout Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="region.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <header>
+        <h1
+            style="text-align: center; padding: 1rem; font-family: Helvetica, Arial,sans-serif; font-weight: 700; letter-spacing: 2px; border-bottom: 0.5px solid rgba(158, 156, 156, 0.5); text-Shadow: 2px 2px 4px rgba(0,0,0,0.3)">
+            STUDENT DROPOUT ANALYSIS</h1>
+        <nav>
+            <div class="navbar">
+                <a href="index.html" class="nav-link hvrcenter">
+                    <i class="fas fa-home"></i><br>
+                    <span class="link-name">Home</span>
+                </a>
+                <a href="RegionWiseData.html" class="nav-link hvrcenter">
+                    <i class="fa-solid fa-tachograph-digital"></i><br>
+                    <span class="link-name">DashBoard</span>
+                </a>
+                <a href="https://dropout-ratio.vercel.app/" class="nav-link hvrcenter">
+                    <i class="fa-solid fa-chart-simple"></i><br>
+                    <span class="link-name">Analysis</span>
+                </a>
+
+                <div class="dropdown">
+                    <button class="btn bg-gradient-info dropdown-toggle nav-link hvrcenter" type="button"
+                        id="dropdownMenuButtonnav" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-download"></i><br> Download
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="report.pdf" download>Get Report PDF</a></li>
+                        <hr>
+                        <li><a class="dropdown-item" href="data_csv.csv" download>Get Data CSV</a></li>
+                        <hr>
+                        <li><a class="dropdown-item" href="Hackathon_data.xlsx" download>Get Data Spreadsheet</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+
+    <main>
+        <div class="main-header">
+            <h3 style="font-weight: 600; font-size: 2rem; text-Shadow: 2px 2px 4px rgba(0,0,0,0.3)">School Education
+                Data Dashboard</h3>
+            <div class="state-selector">
+                <p>Select States/UTs:</p>
+                <div class="dropdown">
+                    <button id="dropdownMenuButton" class="btn btn-secondary dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" style="width: 350px; color: white;">
+                        Andaman & Nicobar Islands
+                    </button>
+                    <ul class="dropdown-menu" style="height: 70vh; overflow: scroll; scrollbar-width: thin;">
+                        <!-- <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">National</a></li> -->
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Andaman &
+                                Nicobar Islands</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Andhra
+                                Pradesh</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Arunachal
+                                Pradesh</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Assam</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Bihar</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Chandigarh</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states"
+                                href="#">Chhattisgarh</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Dadra & Nagar
+                                Haveli and Daman & Diu</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Delhi</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Goa</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Gujarat</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Haryana</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Himachal
+                                Pradesh</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Jammu &
+                                Kashmir</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Jharkhand</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Karnataka</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Kerala</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Ladakh</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Lakshadweep</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Madhya
+                                Pradesh</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Maharashtra</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Manipur</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Meghalaya</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Mizoram</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Nagaland</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Odisha</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Puducherry</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Punjab</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Rajasthan</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Sikkim</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Tamilnadu</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Telangana</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Tripura</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Uttarakhand</a>
+                        </li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">Uttar
+                                Pradesh</a></li>
+                        <li style="width: 350px;"><a class="dropdown-item dropdown-item-states" href="#">West Bengal</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab current-tab" id="enrollment" onclick="change_tabs(event,'enrollment-tab')">
+                <h5>Enrollment Rates</h5>
+            </div>
+            <div class="tab" id="school" onclick="change_tabs(event,'school-tab')">
+                <h5>School Infrastructure</h5>
+            </div>
+            <div class="tab" id="literacy" onclick="change_tabs(event,'literacy-tab')">
+                <h5>Population Data</h5>
+            </div>
+            <div class="tab" id="ptr" onclick="change_tabs(event,'ptr-tab')">
+                <h5>Pupil-Teacher Ratio</h5>
+            </div>
+            <div class="tab" id="dropout" onclick="change_tabs(event,'indices-tab')">
+                <h5>Indices</h5>
+            </div>
+            <div class="tab" id="dropout" onclick="change_tabs(event,'dropout-tab')">
+                <h5>Dropout Rates</h5>
+            </div>
+        </div>
+
+        <div class="tab-content enrollment" id="enrollment-tab">
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-check"></i></div>
+                    <h5>Enrollment Ratio For Primary Schooling</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="enrprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-check"></i></div>
+                    <h5>Enrollment Ratio For Upper-Primary Schooling</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="enrupprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-check"></i></div>
+                    <h5>Enrollment Ratio For Secondary Schooling</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="enrsec">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tab-content school" id="school-tab" style="display: none;">
+
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school"></i></div>
+                    <h5>Number Of Schools In Urban Areas</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="schlurban">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school"></i></div>
+                    <h5>Number Of Schools In Rural Areas</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="schlrural">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school"></i></div>
+                    <h5>Number Of Schools (Overall)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="schloverall">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-3" style="height: 500px;">
+                <div class="chart-card" style="width: 22%; margin: 10px 10px 10px 8px;">
+                    <div class="card-icon"><i class="fa-regular fa-lightbulb"></i></div>
+                    <canvas id="school-chart1" class="chart-canvas"></canvas>
+                </div>
+                <div class="chart-card" style="width: 22%; margin: 10px 10px 10px 8px;">
+                    <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <canvas id="school-chart2" class="chart-canvas"></canvas>
+                </div>
+                <div class="chart-card" style="width: 22%; margin: 10px 10px 10px 8px;">
+                    <div class="card-icon"><i class="fa-solid fa-faucet-drip"></i></div>
+                    <canvas id="school-chart3" class="chart-canvas"></canvas>
+                </div>
+                <div class="chart-card" style="width: 22%; margin: 10px 10px 10px 8px;">
+                    <div class="card-icon"><i class="fa-solid fa-capsules"></i></div>
+                    <canvas id="school-chart4" class="chart-canvas"></canvas>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="tab-content literacy" id="literacy-tab" style="display: none;">
+
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                    <h5>Literacy Rate</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="litrate">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <h5>Per Capita Income</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="pci">----</p>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card-3">
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h5>Life Expectency For Boys</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+                            <p class="stats" id="lifegirl">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h5>Life Expectency For Girls</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="lifeboy">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tab-content ptr" id="ptr-tab" style="display: none;">
+
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
+                    <h5>Number Of Teachers (Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="teacprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <h5>Number Of Students (Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="studprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+                    <h5>Pupil-Teacher Ratio (Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="ptrprim">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
+                    <h5>Number Of Teachers (Upper-Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="teacupprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <h5>Number Of Students (Upper-Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="studupprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+                    <h5>Pupil-Teacher Ratio (Upper-Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="ptrupprim">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
+                    <h5>Number Of Teachers (Secondary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="teacsec">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <h5>Number Of Students (Secondary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="studsec">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+                    <h5>Pupil-Teacher Ratio (Secondary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="ptrsec">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
+                    <h5>Number Of Teachers(Overall)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="teacovl">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <h5>Number Of Students (Overall)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="studovl">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+                    <h5>Pupil-Teacher Ratio (Overall)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="ptrovl">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tab-content indices" id="indices-tab" style="display: none;">
+
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-children"></i></div>
+                    <h5>Gender-Parity Index (Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="gpiprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-children"></i></div>
+                    <h5>Gender-Parity Index (Upper-Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="gpiupprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-children"></i></div>
+                    <h5>Gender-Parity Index (Secondary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="gpisec">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-people-group"></i></div>
+                    <h5>Human Development Index</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="hdi">----</p>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="tab-content dropout" id="dropout-tab" style="display: none;">
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-xmark"></i></div>
+                    <h5>Dropout Rate For Girls (Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="dropgirlprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-xmark"></i></div>
+                    <h5>Dropout Rate For Boys (Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="dropboyprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-xmark"></i></div>
+                    <h5>Dropout Rate Overall (Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="dropovlprim">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-xmark"></i></div>
+                    <h5>Dropout Rate For Girls (Upper-Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="dropgirlupprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-xmark"></i></div>
+                    <h5>Dropout Rate For Boys (Upper-Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="dropboyupprim">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-xmark"></i></div>
+                    <h5>Dropout Rate Overall (Upper-Primary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="dropovlupprim">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-xmark"></i></div>
+                    <h5>Dropout Rate For Girls (Secondary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="dropgirlsec">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-xmark"></i></div>
+                    <h5>Dropout Rate For Boys (Secondary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="dropboysec">----</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-school-circle-xmark"></i></div>
+                    <h5>Dropout Rate Overall (Secondary)</h5>
+                    <div class="card-bar"></div>
+                    <div class="data">
+                        <span>
+
+                            <p class="stats" id="dropovlsec">----</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer style="height: 5rem;">
+        <hr>
+
+        <div class="copy">
+            <div>&copy;2024 StudentDropoutAnalysis</div>
+            <div>** All data is for the period 2021-2022</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
